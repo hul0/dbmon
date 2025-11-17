@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome DB Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <span>Awesome DB Admin</span>
+      </div>
+      <div class="section">
+        <h2>Databases</h2>
+        <select id="databaseSelect"></select>
+      </div>
+      <div class="section">
+        <h2>Tables</h2>
+        <ul id="tablesList"></ul>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="status">
+          <span id="connectionInfo">Connecting...</span>
+        </div>
+        <div class="actions">
+          <button id="refreshBtn">Refresh</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="tabs">
+          <button class="tab active" data-tab="browse">Browse</button>
+          <button class="tab" data-tab="structure">Structure</button>
+          <button class="tab" data-tab="sql">SQL</button>
+        </div>
+
+        <div class="tab-panel active" id="tab-browse">
+          <div class="panel-header">
+            <h2>Rows</h2>
+            <div class="panel-tools">
+              <input id="rowFilterInput" class="filter-input" placeholder="Filter rows..." />
+              <div class="pager">
+                <button id="prevPageBtn">&lt;</button>
+                <span id="pageInfo"></span>
+                <button id="nextPageBtn">&gt;</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <table id="rowsTable">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-structure">
+          <div class="panel-header">
+            <h2>Structure</h2>
+          </div>
+          <div class="table-container">
+            <table id="structureTable">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Type</th>
+                  <th>Null</th>
+                  <th>Key</th>
+                  <th>Default</th>
+                  <th>Extra</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-sql">
+          <div class="panel-header">
+            <h2>SQL Console</h2>
+            <button id="runSqlBtn">Run</button>
+          </div>
+          <textarea id="sqlInput" spellcheck="false"></textarea>
+          <div class="sql-result">
+            <pre id="sqlError"></pre>
+            <div class="table-container">
+              <table id="sqlResultTable">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
